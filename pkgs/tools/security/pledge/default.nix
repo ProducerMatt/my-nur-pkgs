@@ -65,6 +65,6 @@ in
     meta = {
       homepage = "https://justine.lol/pledge/";
       architectures = [ "amd64" ];
-      platforms = commonMeta.platforms;
+      platforms = [ "x86_64-linux" ];
     };
   }
