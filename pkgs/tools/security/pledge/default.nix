@@ -14,7 +14,6 @@ let
     name = "pledge";
     version = "1.4"; # July 25th 2022
     rev = "${name}-${version}"; # looks redundant but useful if you want a specific Git commit
-    platforms = lib.platforms.linux;
 
     # NOTE(ProducerMatt): Cosmo embeds relevant licenses near the top of the
     # executable. You can manually inspect by viewing the binary with `less`.
@@ -31,10 +30,10 @@ let
     path="tool/build";
     target = "${commonMeta.name}.com";
     make = "./build/bootstrap/make.com";
-    platformFlag =
-      if commonMeta.platforms == lib.platforms.linux
-      then ""#"CPPFLAGS=-DSUPPORT_VECTOR=0b00000001" # currently fails
-        else "";
+    platformFlag = "";
+    # Since we're only compiling for Linux, it makes sense to pass
+    # "CPPFLAGS=-DSUPPORT_VECTOR=0b00000001", which disables all non-Linux code.
+    # However this currently fails.
   };
   cosmoSrc = fetchFromGitHub {
     owner = "jart";
@@ -64,7 +63,6 @@ in
 
     meta = {
       homepage = "https://justine.lol/pledge/";
-      architectures = [ "amd64" ];
       platforms = [ "x86_64-linux" ];
     };
   }
