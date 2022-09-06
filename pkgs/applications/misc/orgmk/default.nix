@@ -12,7 +12,14 @@ in stdenv.mkDerivation {
     emacs28NativeComp
   ];
   patches = [ ./params.patch ];
-  preBuild = "mkdir -p $out/bin";
+  preBuild = ''
+  '';
+  dontInstall = true;
+  preFixup = ''
+    mkdir -p $out/bin
+    mkdir -p $out/share/orgmk
+    cp -r bin/* $out/bin/
+  '';
   src = fetchFromGitHub {
     owner = "fniessen";
     repo = "orgmk";
