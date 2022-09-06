@@ -14,7 +14,7 @@
 let
   commonMeta = rec {
     name = "pledge";
-    version = "1.7"; # September 6th 2022
+    version = "2022-09-06"; # September 6th 2022
   };
 
   cosmoMeta = {
@@ -31,8 +31,8 @@ let
   cosmoSrc = fetchFromGitHub {
     owner = "jart";
     repo = "cosmopolitan";
-    rev = "pledge-1.7";
-    sha256 = "+co5n0p41qAAiLSVmBHHSOTE2WZeytu/09mEStU1HtA=";
+    rev = "dbf12c3";
+    sha256 = "k8L2KuaWTvn838Uqr8/rX/IfVrG4IptSuZE8Ft7Wqx4=";
   };
   buildStuff = toString (map (item: ''
       ${cosmoMeta.make} MODE=${cosmoMeta.mode} -j$NIX_BUILD_CORES \
