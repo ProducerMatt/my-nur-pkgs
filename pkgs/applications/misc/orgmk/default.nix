@@ -11,14 +11,9 @@ in stdenv.mkDerivation {
   buildInputs = with pkgs; [
     emacs28NativeComp
   ];
-  patches = [ ./params.patch ];
+  patches = [ ./make.patch ];
   preBuild = ''
-  '';
-  dontInstall = true;
-  preFixup = ''
     mkdir -p $out/bin
-    mkdir -p $out/share/orgmk
-    cp -r bin/* $out/bin/
   '';
   src = fetchFromGitHub {
     owner = "fniessen";
