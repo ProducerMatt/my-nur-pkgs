@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index f99c1ac..814a205 100644
+index f99c1ac..73f2aef 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -4,19 +4,16 @@
@@ -12,7 +12,7 @@ index f99c1ac..814a205 100644
  -include Make.params
  
 -ORGMK_ROOT=$(PWD)
-+ORGMK_ROOT=${out}/share
++ORGMK_ROOT=${out}/share/orgmk
  ORGMK_EL=$(ORGMK_ROOT)/site-lisp/orgmk.el
  
  # WARNING -- ORGMK_EL must contain the correct path to the `orgmk.el' file
@@ -33,7 +33,7 @@ index f99c1ac..814a205 100644
  	chmod u+x bin/$(ORGMK_MAKE_SETUP)
  	@echo
  
-@@ -56,20 +53,20 @@ bin/$(ORGMK_MAKE_SETUP):                          # Create core file for `orgmk'
+@@ -56,20 +53,21 @@ bin/$(ORGMK_MAKE_SETUP):                          # Create core file for `orgmk'
  .PHONY: install
  install: all                            # Create symlinks to Orgmk scripts
  	@echo "Creating symlinks..."
@@ -68,4 +68,5 @@ index f99c1ac..814a205 100644
 +	cp bin/$(ORGMK_MAKE_SETUP)        $(BIN_DIR)/$(ORGMK_MAKE_SETUP)
 +	cp bin/$(ORGMK_MAKE_RUN)          $(BIN_DIR)/$(ORGMK_MAKE_RUN)
  
++	cp -r lisp site-lisp ${out}/share/orgmk/
  ### Makefile ends here
