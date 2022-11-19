@@ -19,6 +19,7 @@
   ripsecrets = pkgs.callPackage ./pkgs/tools/security/ripsecrets { };
   orgmk = pkgs.callPackage ./pkgs/applications/misc/orgmk { };
   yaml2nix = pkgs.callPackage ./pkgs/tools/misc/yaml2nix { };
+  rsync-bpc = pkgs.callPackage ./pkgs/rsync-bpc { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }
