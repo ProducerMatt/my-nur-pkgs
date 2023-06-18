@@ -168,6 +168,8 @@ stdenv.mkDerivation {
 
     src = cosmoSrc;
     buildPhase = ''
+      echo "$ARCH"
+      ${cosmoMeta.make} --version
       sh ./build/bootstrap/compile.com --assimilate
       sh ./build/bootstrap/cocmd.com --assimilate
       sh ./build/bootstrap/echo.com --assimilate
