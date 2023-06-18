@@ -20,8 +20,8 @@
 let
   commonMeta = rec {
     name = "cosmopolitan";
-    version = "2023-06-10";
-    rev = "5a6a4819d47410bd1cb98a4b3bc13df89c32ba16";
+    version = "2023-06-17";
+    rev = "b881c0ec9ea6936a87b8032375b3f11e21087b05";
     changelog = "https://github.com/jart/cosmopolitan/commits/${rev}";
   };
 
@@ -72,14 +72,6 @@ let
           ];
           licenses = [ asl20 bsd3 isc mit ];
         };
-        blinkenlights = {
-          coms = [
-            "tool/build/blinkenlights.com"
-          ];
-          licenses = [ asl20 bsd3 mit zlib isc ];
-          # Using "MIT" license in place of fdlibm license
-          # https://lists.fedoraproject.org/pipermail/legal/2013-December/002346.html
-        };
         ttyinfo = {
           coms = [
             "examples/ttyinfo.com"
@@ -115,7 +107,7 @@ let
     owner = "jart";
     repo = "cosmopolitan";
     rev = commonMeta.rev;
-    hash = "sha256-CpvECuTIifnT3MEHd1qtj2xaCIY2V7BIxagV6QDCqaA=";
+    hash = "sha256-g4hTMenzVNdMlE0D0NwBpLyKY1Ta/H+eMrS7es2Svew=";
   };
   wantedOutputs =
     # make attrs of all outputs to build. If given a bad name in
