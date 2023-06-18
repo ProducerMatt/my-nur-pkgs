@@ -20,8 +20,8 @@
 let
   commonMeta = rec {
     name = "cosmopolitan";
-    version = "2023-05-25";
-    rev = "1422e96b4e6071a902be8cbd4e7f9ae73732b34b";
+    version = "2023-06-17";
+    rev = "b881c0ec9ea6936a87b8032375b3f11e21087b05";
     changelog = "https://github.com/jart/cosmopolitan/commits/${rev}";
   };
 
@@ -72,14 +72,6 @@ let
           ];
           licenses = [ asl20 bsd3 isc mit ];
         };
-        blinkenlights = {
-          coms = [
-            "tool/build/blinkenlights.com"
-          ];
-          licenses = [ asl20 bsd3 mit zlib isc ];
-          # Using "MIT" license in place of fdlibm license
-          # https://lists.fedoraproject.org/pipermail/legal/2013-December/002346.html
-        };
         ttyinfo = {
           coms = [
             "examples/ttyinfo.com"
@@ -102,8 +94,8 @@ let
         };
     };
 
-    make = "make";
-    #make = "./build/bootstrap/make.com";
+    #make = "make";
+    make = "./build/bootstrap/make.com";
     platformFlag =
       if linuxOnly
         then "CPPFLAGS=-DSUPPORT_VECTOR=1"
@@ -115,7 +107,7 @@ let
     owner = "jart";
     repo = "cosmopolitan";
     rev = commonMeta.rev;
-    hash = "sha256-xlKv25oDHpK1A0Ni2oRdTqKi5PD2t66sZB6Wv9HZmQA=";
+    hash = "sha256-g4hTMenzVNdMlE0D0NwBpLyKY1Ta/H+eMrS7es2Svew=";
   };
   wantedOutputs =
     # make attrs of all outputs to build. If given a bad name in
@@ -169,12 +161,15 @@ in
 stdenv.mkDerivation {
     pname = commonMeta.name;
     version = commonMeta.version;
-    phases = [ "unpackPhase" "buildPhase" "installPhase" ];
+    phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
+    patch = ./info.patch;
 
     outputs = [ "out" ] ++ wantedOutputNames;
 
     src = cosmoSrc;
     buildPhase = ''
+      echo "$ARCH"
+      ${cosmoMeta.make} --version
       sh ./build/bootstrap/compile.com --assimilate
       sh ./build/bootstrap/cocmd.com --assimilate
       sh ./build/bootstrap/echo.com --assimilate
@@ -186,6 +181,7 @@ stdenv.mkDerivation {
                  + "\n" + symlinkStuff;
 
     meta = {
+      broken = true; # FIXME
       homepage = "https://github.com/jart/cosmopolitan";
       description = "Selected programs from the CosmopolitanC monorepo";
       platforms = [ "x86_64-linux" ];
