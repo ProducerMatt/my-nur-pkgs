@@ -169,7 +169,8 @@ in
 stdenv.mkDerivation {
     pname = commonMeta.name;
     version = commonMeta.version;
-    phases = [ "unpackPhase" "buildPhase" "installPhase" ];
+    phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
+    patch = ./info.patch;
 
     outputs = [ "out" ] ++ wantedOutputNames;
 
