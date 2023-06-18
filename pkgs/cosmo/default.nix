@@ -181,6 +181,7 @@ stdenv.mkDerivation {
                  + "\n" + symlinkStuff;
 
     meta = {
+      broken = true; # FIXME
       homepage = "https://github.com/jart/cosmopolitan";
       description = "Selected programs from the CosmopolitanC monorepo";
       platforms = [ "x86_64-linux" ];
