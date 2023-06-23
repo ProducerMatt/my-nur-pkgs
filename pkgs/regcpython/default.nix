@@ -14,6 +14,6 @@
     minor = "10";
     path = "11";
     patch = "";
-    suffix = "";
+    suffix = "regc";
   };
 }
