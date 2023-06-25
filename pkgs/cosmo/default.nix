@@ -1,7 +1,7 @@
 { lib,
   fetchFromGitHub,
   stdenv,
-  linuxOnly ? true,
+#  linuxOnly ? true,
   buildMode ? "rel",
   limitOutputs ? false # defaults to all
 }:
@@ -20,8 +20,8 @@
 let
   commonMeta = rec {
     name = "cosmopolitan";
-    version = "2023-05-25";
-    rev = "1422e96b4e6071a902be8cbd4e7f9ae73732b34b";
+    version = "2023-06-17";
+    rev = "b881c0ec9ea6936a87b8032375b3f11e21087b05";
     changelog = "https://github.com/jart/cosmopolitan/commits/${rev}";
   };
 
@@ -72,14 +72,6 @@ let
           ];
           licenses = [ asl20 bsd3 isc mit ];
         };
-        blinkenlights = {
-          coms = [
-            "tool/build/blinkenlights.com"
-          ];
-          licenses = [ asl20 bsd3 mit zlib isc ];
-          # Using "MIT" license in place of fdlibm license
-          # https://lists.fedoraproject.org/pipermail/legal/2013-December/002346.html
-        };
         ttyinfo = {
           coms = [
             "examples/ttyinfo.com"
@@ -102,20 +94,21 @@ let
         };
     };
 
-    make = "make";
-    #make = "./build/bootstrap/make.com";
+    #make = "make";
+    make = "./build/bootstrap/make.com";
     platformFlag =
-      if linuxOnly
-        then "CPPFLAGS=-DSUPPORT_VECTOR=1"
-        else "";
-    # NOTE(ProducerMatt): since Nix builds will all be on Linux,
-    # might as well target Linux exclusively.
+      "";
+    #   if linuxOnly
+    #     then "CPPFLAGS=-DSUPPORT_VECTOR=1"
+    #     else "";
+    # # NOTE(ProducerMatt): since Nix builds will all be on Linux,
+    # # might as well target Linux exclusively.
   };
   cosmoSrc = fetchFromGitHub {
     owner = "jart";
     repo = "cosmopolitan";
     rev = commonMeta.rev;
-    hash = "sha256-xlKv25oDHpK1A0Ni2oRdTqKi5PD2t66sZB6Wv9HZmQA=";
+    hash = "sha256-g4hTMenzVNdMlE0D0NwBpLyKY1Ta/H+eMrS7es2Svew=";
   };
   wantedOutputs =
     # make attrs of all outputs to build. If given a bad name in
