@@ -92,6 +92,36 @@ let
           ];
           licenses = [ bsd3 mit zlib isc ];
         };
+        cocmd = {
+          coms = [
+            "tool/build/cocmd.com"
+          ];
+          licenses = [ asl20 bsd3 mit isc ];
+        };
+        lua = {
+          coms = [
+            "third_party/lua/lua.com"
+          ];
+          licenses = [ asl20 bsd2 bsd3 mit isc ];
+          # Using "MIT" license in place of fdlibm license
+        };
+        redbean = {
+          coms = [
+            "third_party/radpajama/radpajama-chat.com"
+            "third_party/radpajama/radpajama-copy.com"
+            "third_party/radpajama/radpajama-quantize.com"
+            "third_party/radpajama/radpajama.com"
+          ];
+          licenses = [ asl20 bsd2 bsd3 mit isc ];
+          # Using "MIT" license in place of fdlibm license
+        };
+        llama = {
+          coms = [
+            "third_party/ggml/llama.com"
+          ];
+          licenses = [ asl20 bsd2 bsd3 mit isc ];
+          # Using "MIT" license in place of fdlibm license
+        };
     };
 
     #make = "make";
