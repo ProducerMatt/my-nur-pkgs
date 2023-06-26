@@ -40,7 +40,7 @@ let
             "tool/build/pledge.com"
             "tool/build/unveil.com"
           ];
-          licenses = [ asl20 bsd3 zlib ];
+          licenses = [ asl20 bsd3 mit zlib isc ];
         };
         pkzip = {
           coms = [
