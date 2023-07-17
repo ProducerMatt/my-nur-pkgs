@@ -24,4 +24,6 @@
   rsbkb = pkgs.callPackage ./pkgs/rsbkb { };
   regcpython = pkgs.callPackage ./pkgs/regcpython { };
   fastenhealth = pkgs.callPackage ./pkgs/fastenhealth { };
+  whisper-x = pkgs.callPackage ./pkgs/whisper-x { };
+  pyannote-audio = pkgs.callPackage ./pkgs/pyannote-audio { };
 }
