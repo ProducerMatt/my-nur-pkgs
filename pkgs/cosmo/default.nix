@@ -20,8 +20,8 @@
 let
   commonMeta = rec {
     name = "cosmopolitan";
-    version = "2023-08-14";
-    rev = "b494d565499c6eb49fd2f48ce036623d2baf63b4";
+    version = "2023-08-27";
+    rev = "4021cd0c1e898970dc82c19733500cad9edf0142";
     changelog = "https://github.com/jart/cosmopolitan/commits/${rev}";
   };
 
@@ -124,8 +124,8 @@ let
         };
     };
 
-    #make = "make";
-    make = "./build/bootstrap/make.com";
+    make = "make";
+    #make = "./build/bootstrap/make.com";
     platformFlag =
       "";
     #   if linuxOnly
@@ -138,7 +138,7 @@ let
     owner = "jart";
     repo = "cosmopolitan";
     rev = commonMeta.rev;
-    hash = "sha256-9LcxbQGxS+WanA3hOqa+OrWh69PUEA1VUTYJCHKCbqM=";
+    hash = "sha256-9/MsBSyQpbSlMMdXS2oXs8grY71kt2H2liOLpP/eyBY=";
   };
   wantedOutputs =
     # make attrs of all outputs to build. If given a bad name in
