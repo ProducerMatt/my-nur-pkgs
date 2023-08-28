@@ -1,7 +1,7 @@
 { lib,
   fetchFromGitHub,
   stdenv,
-#  linuxOnly ? true,
+#  linuxOnly ? true, # broken on nix builds
   buildMode ? "rel",
   limitOutputs ? false # defaults to all
 }:
@@ -125,11 +125,11 @@ let
     };
 
     make = "make";
-    #make = "./build/bootstrap/make.com";
+    #make = "./build/bootstrap/make.com"; # broken on nix builds
     platformFlag =
       "";
     #   if linuxOnly
-    #     then "CPPFLAGS=-DSUPPORT_VECTOR=1"
+    #     then "CPPFLAGS=-DSUPPORT_VECTOR=1" # broken on nix builds
     #     else "";
     # # NOTE(ProducerMatt): since Nix builds will all be on Linux,
     # # might as well target Linux exclusively.
