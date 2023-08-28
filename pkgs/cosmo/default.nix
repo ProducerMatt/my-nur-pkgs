@@ -198,10 +198,7 @@ stdenv.mkDerivation {
 
     src = cosmoSrc;
     buildPhase = ''
-      sh ./build/bootstrap/compile.com --assimilate
-      sh ./build/bootstrap/cocmd.com --assimilate
-      sh ./build/bootstrap/echo.com --assimilate
-      sh ./build/bootstrap/rm.com --assimilate
+      find ./build/bootstrap/ -name '*.com' -execdir '{}' --assimilate \;
       '' + buildStuff + ''
       echo "" # workaround for nix's "malformed json" errors
     '';
