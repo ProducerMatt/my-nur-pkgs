@@ -200,7 +200,7 @@ let
             "cp o/${cosmoMeta.mode}/${target} ${"$" + name}/bin/")
             value.coms))
           wantedOutputs)
-        "mkdir -p $out/bin \n"
+        ("mkdir -p $out/bin" + "\n") # workaround for nix's weird stdout muddling
       ]));
   symlinkStuff =
     # symlink per-app outputs to global $out directory, for easy adding to path.
