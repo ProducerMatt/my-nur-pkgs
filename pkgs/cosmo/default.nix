@@ -1,6 +1,6 @@
 { lib
 , fetchFromGitHub
-, stdenv
+, stdenvNoCC
 #, linuxOnly ? true, # broken on nix builds
 , buildMode ? "rel"
 , appList ? true # true = share all
@@ -210,7 +210,7 @@ let
     #spot the mistake!
     #(name: "ls -1N --zero ${"$" + name}/bin | xargs -0 -I'{}' realpath -smz '{}' | xargs -0 -I'{}' ln -s '{}' $out/bin/")
 in
-stdenv.mkDerivation {
+stdenvNoCC.mkDerivation {
     pname = commonMeta.name;
     version = commonMeta.version;
     doCheck = true;
